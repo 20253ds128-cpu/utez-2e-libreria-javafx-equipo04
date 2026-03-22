@@ -1,8 +1,12 @@
 package com.utez.catalogolibros.controller;
 
 import com.utez.catalogolibros.model.Libro;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MainController {
 
@@ -44,7 +48,22 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        System.out.println("Controller cargado correctamente");
+
+        colIsbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
+        colTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
+        colAutor.setCellValueFactory(new PropertyValueFactory<>("autor"));
+        colAnio.setCellValueFactory(new PropertyValueFactory<>("anio"));
+        colGenero.setCellValueFactory(new PropertyValueFactory<>("genero"));
+        colDisponible.setCellValueFactory(new PropertyValueFactory<>("disponible"));
+
+        ObservableList<Libro> lista = FXCollections.observableArrayList(
+                new Libro("123", "El Principito", "Antoine de Saint-Exupéry", 1943, "Ficción", true),
+                new Libro("456", "1984", "George Orwell", 1949, "Distopía", true),
+                new Libro("789", "Clean Code", "Robert C. Martin", 2008, "Programación", false)
+        );
+
+        tablaLibros.setItems(lista);
+
     }
 
 }
