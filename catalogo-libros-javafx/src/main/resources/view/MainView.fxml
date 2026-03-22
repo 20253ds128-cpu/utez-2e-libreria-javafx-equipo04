@@ -9,7 +9,10 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/25"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.utez.catalogolibros.controller.MainController">
    <children>
       <VBox layoutX="93.0" layoutY="46.0" prefHeight="300.0" prefWidth="400.0" spacing="10.0">
          <padding>
@@ -26,12 +29,12 @@
                   <Button fx:id="btnExportar" mnemonicParsing="false" text="Exportar" />
                </children>
             </HBox>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="tablaLibros" prefHeight="200.0" prefWidth="200.0">
               <columns>
                 <TableColumn fx:id="colIsbn" prefWidth="54.0" text="ISBN" />
                 <TableColumn fx:id="colTitulo" prefWidth="61.0" text="Título" />
                   <TableColumn fx:id="colAutor" prefWidth="61.0" text="Autor" />
-                  <TableColumn fx:id="colAño" prefWidth="65.0" text="Año" />
+                  <TableColumn fx:id="colAnio" prefWidth="65.0" text="Año" />
                   <TableColumn fx:id="colGenero" prefWidth="67.0" text="Género" />
                   <TableColumn fx:id="colDisponible" prefWidth="70.0" text="Disponible" />
               </columns>
