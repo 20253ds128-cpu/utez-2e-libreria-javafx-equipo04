@@ -4,6 +4,9 @@ import com.utez.catalogolibros.model.Libro;
 import com.utez.catalogolibros.repository.LibroRepository;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import javafx.scene.control.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -66,5 +69,23 @@ public class MainController {
         tablaLibros.setItems(lista);
 
     }
+
+    @FXML
+    private void onNuevo() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LibroFormView.fxml"));
+
+            System.out.println(getClass().getResource("/view/LibroFormView.fxml"));
+
+            Stage stage = new Stage();
+            stage.setScene(new Scene(loader.load()));
+            stage.setTitle("Nuevo Libro");
+            stage.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }
