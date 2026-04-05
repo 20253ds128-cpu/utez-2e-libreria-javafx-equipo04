@@ -54,7 +54,6 @@ public class MainController {
 
     @FXML
     public void initialize() {
-
         colIsbn.setCellValueFactory(new PropertyValueFactory<>("isbn"));
         colTitulo.setCellValueFactory(new PropertyValueFactory<>("titulo"));
         colAutor.setCellValueFactory(new PropertyValueFactory<>("autor"));
@@ -62,29 +61,34 @@ public class MainController {
         colGenero.setCellValueFactory(new PropertyValueFactory<>("genero"));
         colDisponible.setCellValueFactory(new PropertyValueFactory<>("disponible"));
 
-        ObservableList<Libro> lista = FXCollections.observableArrayList(
-                repository.cargarLibros()
-        );
-
-        tablaLibros.setItems(lista);
-
+        cargarTabla();
     }
 
     @FXML
     private void onNuevo() {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/LibroFormView.fxml"));
-
-            System.out.println(getClass().getResource("/view/LibroFormView.fxml"));
-
             Stage stage = new Stage();
-            stage.setScene(new Scene(loader.load()));
+
+            Scene scene = new Scene(loader.load(), 600, 400);
+            stage.setScene(scene);
             stage.setTitle("Nuevo Libro");
+
+            LibroFormController controller = loader.getController();
+            controller.setOnGuardarCallback(this::cargarTabla);
+
             stage.show();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void cargarTabla() {
+        var lista = javafx.collections.FXCollections.observableArrayList(
+                repository.cargarLibros()
+        );
+        tablaLibros.setItems(lista);
     }
 
 

@@ -3,6 +3,7 @@ package com.utez.catalogolibros.controller;
 import com.utez.catalogolibros.model.Libro;
 import com.utez.catalogolibros.repository.LibroRepository;
 import com.utez.catalogolibros.util.AlertUtil;
+import java.util.function.Consumer;
 import javafx.stage.Stage;
 import javafx.fxml.FXML;
 import java.time.Year;
@@ -33,6 +34,12 @@ public class LibroFormController {
 
     @FXML
     private Button btnCancelar;
+
+    private Runnable onGuardarCallback;
+
+    public void setOnGuardarCallback(Runnable onGuardarCallback) {
+        this.onGuardarCallback = onGuardarCallback;
+    }
 
     private final LibroRepository repository = new LibroRepository();
 
@@ -93,6 +100,10 @@ public class LibroFormController {
             repository.guardarLibros(lista);
 
             AlertUtil.info("Libro creado correctamente");
+
+            if (onGuardarCallback != null) {
+                onGuardarCallback.run();
+            }
 
             // Cierra ventana
             Stage stage = (Stage) btnGuardar.getScene().getWindow();
