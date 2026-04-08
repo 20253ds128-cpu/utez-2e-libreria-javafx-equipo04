@@ -56,7 +56,6 @@ public class MainController implements Initializable {
         configurarBotones();
     }
 
-    // configura las columnas de la tabla
     private void configurarColumnas() {
         colIsbn.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getIsbn()));
         colTitulo.setCellValueFactory(c -> new SimpleStringProperty(c.getValue().getTitulo()));
@@ -71,20 +70,17 @@ public class MainController implements Initializable {
         tablaLibros.setPlaceholder(new Label("El catálogo está vacío. Haga clic en \"Nuevo\" para agregar un libro."));
     }
 
-    // carga o actualiza los datos en la tabla
     public void cargarDatos() {
         datos.setAll(servicio.obtenerTodos());
         actualizarEstado();
     }
 
-    // actualiza el texto de estado abajo
     private void actualizarEstado() {
         int total = datos.size();
         long disponibles = datos.stream().filter(Libro::isDisponible).count();
         lblEstado.setText("Total: " + total + " libro(s)  |  Disponibles: " + disponibles);
     }
 
-    // activa o desactiva botones según la selección
     private void configurarBotones() {
         btnEditar.disableProperty().bind(tablaLibros.getSelectionModel().selectedItemProperty().isNull());
         btnEliminar.disableProperty().bind(tablaLibros.getSelectionModel().selectedItemProperty().isNull());
@@ -169,8 +165,6 @@ public class MainController implements Initializable {
             stage.setTitle(libro == null ? "Nuevo libro" : "Editar libro");
 
             Scene scene = new Scene(loader.load(), 480, 420);
-            scene.getStylesheets().add(
-                    getClass().getResource("/com/biblioteca/views/styles.css").toExternalForm());
             stage.setScene(scene);
 
             FormController formCtrl = loader.getController();
@@ -199,8 +193,6 @@ public class MainController implements Initializable {
             stage.setTitle("Detalle del libro");
 
             Scene scene = new Scene(loader.load(), 420, 360);
-            scene.getStylesheets().add(
-                    getClass().getResource("/com/biblioteca/views/styles.css").toExternalForm());
             stage.setScene(scene);
 
             DetalleController detalleCtrl = loader.getController();

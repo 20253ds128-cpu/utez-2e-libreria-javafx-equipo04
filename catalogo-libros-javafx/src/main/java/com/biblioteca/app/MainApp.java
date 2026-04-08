@@ -11,7 +11,7 @@ import java.io.IOException;
 /**
  * Clase principal que arranca la aplicación de la biblioteca.
  */
-public class BibliotecaApp extends Application {
+public class MainApp extends Application {
 
     private static LibroService libroService;
 
