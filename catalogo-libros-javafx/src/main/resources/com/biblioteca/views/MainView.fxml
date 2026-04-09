@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.biblioteca.controller.MainController">
+
+    // parte superior
+    <top>
+        <VBox spacing="5" alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="10"/>
+            </padding>
+
+            <Label text="Biblioteca Escolar"/>
+            <Label text="Gestión del Catálogo de Libros"/>
+        </VBox>
+    </top>
+
+    // parte del centro (la tabla)
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <TableView fx:id="tablaLibros" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn fx:id="colIsbn" text="ISBN / ID"/>
+                    <TableColumn fx:id="colTitulo" text="Título"/>
+                    <TableColumn fx:id="colAutor" text="Autor"/>
+                    <TableColumn fx:id="colAnio" text="Año"/>
+                    <TableColumn fx:id="colGenero" text="Género"/>
+                    <TableColumn fx:id="colDisponible" text="Disponible"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    // parte inferior (botones)
+    <bottom>
+        <VBox spacing="10" alignment="CENTER">
+            <padding>
+                <Insets top="10" bottom="10"/>
+            </padding>
+
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="btnNuevo" text="Nuevo" onAction="#onNuevo"/>
+                <Button fx:id="btnEditar" text="Editar" onAction="#onEditar"/>
+                <Button fx:id="btnEliminar" text="Eliminar" onAction="#onEliminar"/>
+                <Button fx:id="btnDetalle" text="Ver detalle" onAction="#onDetalle"/>
+                <Button fx:id="btnExportar" text="Exportar" onAction="#onExportar"/>
+            </HBox>
+
+            <Label fx:id="lblEstado" text="Estado"/>
+        </VBox>
+    </bottom>
+
+</BorderPane>
