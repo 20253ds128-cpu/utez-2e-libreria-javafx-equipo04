@@ -113,7 +113,7 @@ public void guardarEnArchivo(){
         try {
             Files.createDirectories(Paths.get("data"));
 
-            try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO_REPORTE))) {
+            try (BufferedWriter bw = new BufferedWriter(new FileWriter(ARCHIVO_DATOS))) {
                 bw.write("# Catálogo Biblioteca Escolar - formato: isbn;titulo;autor;anio;genero;disponible");
                 bw.newLine();
 
@@ -209,8 +209,3 @@ public void guardarEnArchivo(){
 
 
 }
-
-
-
-
-
