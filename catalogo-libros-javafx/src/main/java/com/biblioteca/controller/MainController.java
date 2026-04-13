@@ -49,6 +49,8 @@ public class MainController implements Initializable {
         servicio = MainApp.getLibroServices();
         datos    = FXCollections.observableArrayList();
 
+        tablaLibros.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+
         configurarColumnas();
         cargarDatos();
         configurarBotones();

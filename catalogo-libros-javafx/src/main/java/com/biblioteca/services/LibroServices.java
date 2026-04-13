@@ -14,7 +14,7 @@ public class LibroServices {
 
     private static final String ARCHIVO_DATOS = "data/catalogo.csv";
     private static final String ARCHIVO_REPORTE = "data/reporte_catalogo.csv";
-    private static final String SEPARADOR = ":";
+    private static final String SEPARADOR = ";";
     private static final int ANIO_MIN = 1500;
 
     private final List<Libro> catalogo = new ArrayList<>();
